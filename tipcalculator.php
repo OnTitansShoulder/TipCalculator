@@ -11,8 +11,8 @@
             <div class="buttonBox">
               <input class="button" type="submit" value="Calculate">
             </div>
-            <div class="center" style="height:100px; width:50%; float:left">
-              <h1>$Tip Calculator$</h1>
+            <div class="center" style="height:120px; width:50%; float:left; padding-top:2px">
+              <p style="font-size: 30;"><b>$Tip Calculator$</b></p>
             </div>
             <div class="buttonBox">
               <div class="btn center" >

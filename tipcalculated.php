@@ -11,19 +11,29 @@
    {
      $bill = $_POST["billamount"];
      $percentage = $_POST["percentage"];
-     if($percentage == -1)
-      $percentage = $_POST["newpercentage"];
+     if($percentage == -1){
+        $percentage = $_POST["newpercentage"];
+        if($_POST["newpercentage"] == ""){
+          $percentage = 20;
+        }
+      }
      $split = $_POST["split"];
-     if($split == -1)
+     if($split == -1){
       $split = $_POST["newsplit"];
+      if($_POST["newsplit"] == ""){
+       $split = 1;
+     }
+    }
    }
    {
      if($bill <= 0)
       $Error_message = $Error_message . "<p>Please enter a valid bill value.</p>";
-     if($percentage < 0 )
-      $Error_message = $Error_message . "<p>tip percentage cannot be negative.</p>";
-     if($split < 0)
-      $Error_message = $Error_message . "<p>The number of people cannot be negative.</p>";
+      else if($bill > 9999999)
+      $Error_message = $Error_message . "<p>Are you crazy?</p>";
+     if($percentage <= 0 )
+      $Error_message = $Error_message . "<p>tip percentage cannot be negative or zero.</p>";
+     if($split <= 0)
+      $Error_message = $Error_message . "<p>The number of people cannot be negative or zero.</p>";
    }
    {
      if($Error_message==""){
@@ -47,8 +57,8 @@
             <div class="buttonBox">
               <input class="button" type="submit" value="Calculate">
             </div>
-            <div class="center" style="height:100px; width:50%; float:left">
-              <h1>$Tip Calculator$</h1>
+            <div class="center" style="height:100px; width:50%; float:left; padding-top:2px">
+              <p style="font-size: 30;"><b>$Tip Calculator$</b></p>
             </div>
             <div class="buttonBox">
               <div class="btn center" >
@@ -116,7 +126,7 @@
                  }
                  else{
                    echo "<input type=\"radio\" name=\"split\" value=\"-1\">or:</input>";
-                   echo "<input class=\"customNumber\" type=\"text\" name=\"newsplit\"></input> people<br>";
+                   echo "<input class=\"customNumber\" type=\"text\" name=\"newsplit\" ></input> people<br>";
                  }
                  ?>
               </div>
